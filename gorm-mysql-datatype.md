@@ -1,0 +1,1 @@
+* string: 默认对应mysql中的`longtext`, 可以指定`gorm:"size:16"`指定string对应为mysql中的`varchar(16)`

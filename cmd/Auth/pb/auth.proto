@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "../pb";
+
+message QueryTokenRequest{
+  string accountName=1;
+}
+
+message QueryTokenResponse{
+  int32 code=1;
+  string msg=2;
+  string token=3;
+}
+
+message SaveTokenRequest{
+  string accountName=1;
+  string token=2;
+  int64 tokenExpireTime=3;
+}
+
+message SaveTokenResponse{
+  int32 code=1;
+  string msg=2;
+}
+
+message DelTokenRequest{
+  string accountName=1;
+}
+
+message DelTokenResponse{
+  int32 code=1;
+  string msg=2;
+}
+
+service AuthService{
+  rpc QueryToken(QueryTokenRequest)returns(QueryTokenResponse);
+  rpc SaveToken(SaveTokenRequest)returns(SaveTokenResponse);
+  rpc DelToken(DelTokenRequest)returns(DelTokenResponse);
+}
